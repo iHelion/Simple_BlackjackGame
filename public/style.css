@@ -1,0 +1,232 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Metal Mania', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    flex-direction: column;
+    animation: fadeIn 1s ease-in-out;
+    user-select: none; /* Blokuje zaznaczanie tekstu */
+    position: relative; /* Pozycjonowanie względem strony */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+h1, h2 {
+    margin: 20px;
+}
+
+.title {
+    font-size: 5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(270deg, #ffffff, #cccccc);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    position: absolute;
+    top: 20px;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.menu {
+    text-align: center;
+    margin-top: 200px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 20px 0;
+}
+
+.menu a {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.menu a:hover {
+    color: red;
+    transform: scale(1.2);
+    text-shadow: 0 0 10px red;
+}
+
+@keyframes smoke {
+    0% {
+        opacity: 0.1;
+        transform: translateY(100px) scale(0.5);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-50px) scale(1.0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(1.5);
+    }
+}
+
+.smoke {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 60%);
+    opacity: 0;
+    animation: smoke 5s infinite;
+    pointer-events: none;
+}
+
+.smoke:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.smoke:nth-child(3) {
+    animation-delay: 4s;
+}
+
+.game-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.player, .dealer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.card {
+    width: 50px;
+    height: 75px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.controls button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.controls button:hover {
+    background-color: red;
+}
+
+.betting-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    padding: 10px;
+    border: 1px solid #444;
+    background-color: #222;
+    border-radius: 10px;
+    position: relative;
+    width: fit-content;
+}
+
+#cash {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#bet-amount {
+    padding: 10px;
+    font-size: 1rem;
+    margin: 10px;
+    text-align: center;
+    width: 150px;
+    border: 2px solid #666;
+    background-color: #333;
+    color: white;
+    border-radius: 20px;
+}
+
+#place-bet {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+#place-bet:hover {
+    background-color: red;
+}
+
+/* Dodatkowe style dla elementu statusu gry */
+#game-status {
+    font-size: 1.5rem;
+    margin: 10px;
+    text-align: center;
+    color: yellow;
+    text-shadow: 0 0 10px black;
+    position: absolute; /* Ustawienie absolutne */
+    top: 20px; /* Odległość od góry strony */
+    left: 20px; /* Odległość od lewej strony */
+    z-index: 1000; /* Wysoki index warstwy, aby był na wierzchu */
+}
