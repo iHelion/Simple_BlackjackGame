@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helion bj
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="player">
+            <h2>Player</h2>
+            <div class="cards" id="player-cards"></div>
+            <p id="player-score">Score: 0</p>
+        </div>
+        <div class="dealer">
+            <h2>Dealer</h2>
+            <div class="cards" id="dealer-cards"></div>
+            <p id="dealer-score">Score: 0</p>
+        </div>
+        <div class="controls">
+            <button id="hit" disabled>Hit</button>
+            <button id="stand" disabled>Stand</button>
+            <button id="double" disabled>Double</button>
+        </div>
+    </div>
+    <div class="betting-container">
+        <p id="cash">Cash: $100</p>
+        <input type="number" id="bet-amount" placeholder="Enter your bet" min="1" max="100">
+        <button id="place-bet">Place Bet</button>
+    </div>
+    <p id="game-status" class="title">Waiting for Bet</p> <!-- Dodano element statusu gry -->
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <script src="script.js"></script>
+</body>
+</html>
