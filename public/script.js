@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hitButton = document.getElementById('hit');
     const standButton = document.getElementById('stand');
     const doubleButton = document.getElementById('double');
-    const gameStatusElement = document.getElementById('game-status'); // Dodano element statusu gry
+    const gameStatusElement = document.getElementById('game-status'); 
 
     let deck = [];
     let playerCards = [];
@@ -18,9 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let dealerScore = 0;
     let cash = 100;
     let currentBet = 0;
-    let gameState = "waiting for bet"; // Dodano zmienną do śledzenia stanu gry
+    let gameState = "waiting for bet"; 
 
-    // Funkcja generująca talię kart
     function generateDeck() {
         const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
         const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
@@ -37,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         shuffleDeck();
     }
 
-    // Funkcja tasująca talię
     function shuffleDeck() {
         for (let i = deck.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -45,12 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Funkcja dobierająca kartę z talii
     function drawCard() {
         return deck.pop();
     }
 
-    // Funkcja obliczająca wartość ręki (punkty)
     function calculateScore(cards) {
         let score = 0;
         let hasAce = false;
@@ -66,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return score;
     }
 
-    // Funkcja zwracająca wartość karty
     function cardValue(rank) {
         switch (rank) {
             case 'A':
@@ -92,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Funkcja aktualizująca wyświetlane wyniki
     function updateScores() {
         playerScore = calculateScore(playerCards);
         dealerScore = calculateScore(dealerCards);
@@ -100,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         dealerScoreElement.textContent = `Score: ${dealerScore}`;
     }
 
-    // Funkcja renderująca karty na ekranie
     function renderCards() {
         playerCardsElement.innerHTML = '';
         dealerCardsElement.innerHTML = '';
@@ -108,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
         dealerCards.forEach(card => renderCard(card, dealerCardsElement));
     }
 
-    // Funkcja renderująca pojedynczą kartę
     function renderCard(card, element) {
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
@@ -116,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
         element.appendChild(cardElement);
     }
 
-    // Funkcja rozpoczynająca grę
     function startGame() {
         if (currentBet === 0) {
             alert('Place your bet first.');
@@ -133,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
         placeBetButton.disabled = true;
         betAmountInput.disabled = true;
 
-        // Sprawdzenie czy gracz ma blackjacka
         if (playerScore === 21) {
             gameStatusElement.textContent = "Player Blackjack!";
             cash += currentBet * 1.5;
@@ -144,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Funkcja kończąca grę
     function endGame() {
         hitButton.disabled = true;
         standButton.disabled = true;
@@ -156,18 +145,16 @@ document.addEventListener('DOMContentLoaded', () => {
         currentBet = 0;
     }
 
-    // Funkcja aktualizująca stan gry
     function updateGameState(state) {
         gameState = state;
         updateGameStatus();
     }
 
-    // Funkcja aktualizująca status gry na ekranie
     function updateGameStatus() {
         gameStatusElement.textContent = gameState;
     }
 
-    // Obsługa kliknięcia przycisku 'Hit'
+    
     hitButton.addEventListener('click', () => {
         playerCards.push(drawCard());
         updateScores();
@@ -180,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Obsługa kliknięcia przycisku 'Stand'
+   
     standButton.addEventListener('click', () => {
         while (dealerScore < 17) {
             dealerCards.push(drawCard());
@@ -200,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         endGame();
     });
 
-    // Obsługa kliknięcia przycisku 'Double'
+   
     doubleButton.addEventListener('click', () => {
         if (cash >= currentBet * 2) {
             currentBet *= 2;
@@ -234,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Obsługa kliknięcia przycisku 'Place Bet'
+    
     placeBetButton.addEventListener('click', () => {
         currentBet = parseInt(betAmountInput.value);
         if (isNaN(currentBet) || currentBet <= 0 || currentBet > cash) {
