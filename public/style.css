@@ -11,8 +11,8 @@ body {
     overflow: hidden;
     flex-direction: column;
     animation: fadeIn 1s ease-in-out;
-    user-select: none; /* Blokuje zaznaczanie tekstu */
-    position: relative; /* Pozycjonowanie względem strony */
+    user-select: none; 
+    position: relative; 
 }
 
 @keyframes fadeIn {
@@ -218,15 +218,14 @@ h1, h2 {
     background-color: red;
 }
 
-/* Dodatkowe style dla elementu statusu gry */
 #game-status {
     font-size: 1.5rem;
     margin: 10px;
     text-align: center;
     color: yellow;
     text-shadow: 0 0 10px black;
-    position: absolute; /* Ustawienie absolutne */
-    top: 20px; /* Odległość od góry strony */
-    left: 20px; /* Odległość od lewej strony */
-    z-index: 1000; /* Wysoki index warstwy, aby był na wierzchu */
+    position: absolute;
+    top: 20px;
+    left: 20px; 
+    z-index: 1000; 
 }
